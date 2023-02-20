@@ -1,0 +1,221 @@
+Microsoft Windows [Versión 10.0.19045.2604]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\angel>"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\MySQL\MySQL Shell.lnk"
+MySQL Shell 8.0.32
+
+Copyright (c) 2016, 2023, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@licalhost
+Creating a Classic session to 'root@licalhost'
+Please provide the password for 'root@licalhost': ****
+MySQL Error 2005 (HY000): Unknown MySQL server host 'licalhost' (11001)
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): n
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.32 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > shot databases;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'shot databases' at line 1
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| evaluacion_1       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.0578 sec)
+ MySQL  localhost:3306 ssl  SQL > \use evaluacion_1;
+Default schema set to `evaluacion_1`.
+Fetching global names, object names from `evaluacion_1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > show tables;
++------------------------+
+| Tables_in_evaluacion_1 |
++------------------------+
+| asignaturas            |
+| empleados              |
+| estudiantes            |
+| primer_tabla           |
++------------------------+
+4 rows in set (0.0015 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > desc asignaturas;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| nombre   | varchar(50) | NO   |     | NULL    |       |
+| creditos | int         | NO   |     | NULL    |       |
+| semestre | int         | NO   |     | NULL    |       |
+| clave    | varchar(10) | NO   | PRI | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.0647 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > desc empleados;
++-------------------+-------------+------+-----+---------+-------+
+| Field             | Type        | Null | Key | Default | Extra |
++-------------------+-------------+------+-----+---------+-------+
+| id                | int         | YES  |     | NULL    |       |
+| id_depto          | int         | YES  |     | NULL    |       |
+| nombre            | varchar(50) | YES  |     | NULL    |       |
+| apellido          | varchar(50) | YES  |     | NULL    |       |
+| iniciales         | varchar(10) | YES  |     | NULL    |       |
+| fecha_nacimiento  | datetime    | YES  |     | NULL    |       |
+| rfc               | varchar(13) | YES  |     | NULL    |       |
+| ciudad_nacimiento | text        | YES  |     | NULL    |       |
+| estado            | int         | YES  |     | NULL    |       |
+| pais              | varchar(10) | YES  |     | NULL    |       |
+| celular           | varchar(50) | YES  |     | NULL    |       |
+| telefono_fijo     | varchar(20) | YES  |     | NULL    |       |
+| nss               | varchar(20) | YES  |     | NULL    |       |
++-------------------+-------------+------+-----+---------+-------+
+13 rows in set (0.0024 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > desc estudiantes;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| no_control   | varchar(15) | NO   | PRI | NULL    |       |
+| nombre       | varchar(50) | NO   |     | NULL    |       |
+| apellidos    | varchar(50) | NO   |     | NULL    |       |
+| edad         | int         | NO   |     | NULL    |       |
+| carrera      | varchar(50) | NO   |     | NULL    |       |
+| especialidad | varchar(50) | YES  |     | NULL    |       |
+| telefono     | varchar(50) | YES  |     | NULL    |       |
+| direccion    | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+8 rows in set (0.0020 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > creat table docentes(
+                                             -> id int auto_increment hey,
+                                             -> nombres varchart(50) not null,
+                                             -> apellidos varchar(50) not nul,
+                                             -> rfc varchar(13) not null;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat table docentes(
+id int auto_increment hey,
+nombres varchart(50) not null,
+' at line 1
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > creat table docentes(id int auto_increment hey, nombres varchart(50) not null, apellidos varchar(50) not nul, rfc varchar(13) not null;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat table docentes(id int auto_increment hey, nombres varchart(50) not null, a' at line 1
+  MySQL  localhost:3306 ssl  evaluacion_1  SQL > create table docentes(id int auto_increment key, nombre varchar(50) not null, apellidos varchar(50) not null, rfc varchar(13) not null);
+Query OK, 0 rows affected (0.1575 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > desc docentes;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int         | NO   | PRI | NULL    | auto_increment |
+| nombre    | varchar(50) | NO   |     | NULL    |                |
+| apellidos | varchar(50) | NO   |     | NULL    |                |
+| rfc       | varchar(13) | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.0024 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > insert into docentes(nombre, apellidos, rfc)
+                                             -> values('Luis Angel','Soto Hernandez','123446789101112');
+ERROR: 1406 (22001): Data too long for column 'rfc' at row 1
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > insert into docentes(nombre, apellidos, rfc) values('Luis Angel','Soto Hernandez','1234567891012');
+Query OK, 1 row affected (0.0601 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > select * from docentes;
++----+------------+----------------+---------------+
+| id | nombre     | apellidos      | rfc           |
++----+------------+----------------+---------------+
+|  1 | Luis Angel | Soto Hernandez | 1234567891012 |
++----+------------+----------------+---------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > insert into docentes(nombre, apellidos, rfc) values('Juan','Peres Hernandez','1234567891012');
+Query OK, 1 row affected (0.0722 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > select * from docentes;
++----+------------+-----------------+---------------+
+| id | nombre     | apellidos       | rfc           |
++----+------------+-----------------+---------------+
+|  1 | Luis Angel | Soto Hernandez  | 1234567891012 |
+|  2 | Juan       | Peres Hernandez | 1234567891012 |
++----+------------+-----------------+---------------+
+2 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > insert into docentes(nombre, apellidos, rfc) values('Juanelo','Peres Hernandez','1234567891012');
+Query OK, 1 row affected (0.4141 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > select * from docentes;
++----+------------+-----------------+---------------+
+| id | nombre     | apellidos       | rfc           |
++----+------------+-----------------+---------------+
+|  1 | Luis Angel | Soto Hernandez  | 1234567891012 |
+|  2 | Juan       | Peres Hernandez | 1234567891012 |
+|  3 | Juanelo    | Peres Hernandez | 1234567891012 |
++----+------------+-----------------+---------------+
+3 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > delate from docentes
+                                             -> where id = 3;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delate from docentes
+where id = 3' at line 1
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > delete from docentes where id = 3;
+Query OK, 1 row affected (0.0994 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > select * from docentes;
++----+------------+-----------------+---------------+
+| id | nombre     | apellidos       | rfc           |
++----+------------+-----------------+---------------+
+|  1 | Luis Angel | Soto Hernandez  | 1234567891012 |
+|  2 | Juan       | Peres Hernandez | 1234567891012 |
++----+------------+-----------------+---------------+
+2 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > insert into docentes(nombre, apellidos, rfc) values('otro','Peres Hernandez','1234567891012');
+Query OK, 1 row affected (0.0745 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > select * from docentes;
++----+------------+-----------------+---------------+
+| id | nombre     | apellidos       | rfc           |
++----+------------+-----------------+---------------+
+|  1 | Luis Angel | Soto Hernandez  | 1234567891012 |
+|  2 | Juan       | Peres Hernandez | 1234567891012 |
+|  4 | otro       | Peres Hernandez | 1234567891012 |
++----+------------+-----------------+---------------+
+3 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > create table docentes(
+                                             -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > create table carreras(
+                                             -> clave int auto_increment kay,
+                                             -> nombre_carrera varchar(50),
+                                             -> clave_carrera varchar(20),
+                                             -> nivel varchar(20));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'kay,
+nombre_carrera varchar(50),
+clave_carrera varchar(20),
+nivel varchar(20))' at line 2
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL > create table carreras(  clave int auto_increment key, nombre_carrera varchar(50), clave_carrera varchar(20), nivel varchar(20));
+Query OK, 0 rows affected (0.1083 sec)
+ MySQL  localhost:3306 ssl  evaluacion_1  SQL >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
